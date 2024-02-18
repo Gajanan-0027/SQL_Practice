@@ -1,0 +1,310 @@
+Microsoft Windows [Version 10.0.22621.3155]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\GAJANAN>mysql -u root -p
+Enter password: ************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.05 sec)
+*************************************************CREATE COMMAND******************************************************
+
+mysql> create database Gajanan;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use Gajanan;
+Database changed
+
+mysql> create table student(rollno int,name varchar(10),age int);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_gajanan |
++-------------------+
+| student           |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> describe student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rollno | int         | YES  |     | NULL    |       |
+| name   | varchar(10) | YES  |     | NULL    |       |
+| age    | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+
+mysql> create table emp(id int,name varchar(10),mobile_no int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table teacher(id int,name varchar(10),salary float);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_gajanan |
++-------------------+
+| emp               |
+| student           |
+| teacher           |
++-------------------+
+3 rows in set (0.00 sec)
+*************************************************DROP COMMAND******************************************************
+
+mysql> drop table emp;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_gajanan |
++-------------------+
+| student           |
+| teacher           |
++-------------------+
+2 rows in set (0.00 sec)
+
+mysql> describe student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| rollno | int         | YES  |     | NULL    |       |
+| name   | varchar(10) | YES  |     | NULL    |       |
+| age    | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+*************************************************ALTER COMMAND******************************************************
+
+mysql> alter table student add adderes varchar(50);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| rollno  | int         | YES  |     | NULL    |       |
+| name    | varchar(10) | YES  |     | NULL    |       |
+| age     | int         | YES  |     | NULL    |       |
+| adderes | varchar(50) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table student modify  adderes varchar(30);
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| rollno  | int         | YES  |     | NULL    |       |
+| name    | varchar(10) | YES  |     | NULL    |       |
+| age     | int         | YES  |     | NULL    |       |
+| adderes | varchar(30) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+*************************************************INSERT COMMAND******************************************************
+
+mysql> insert into student values(1,'mrunmai',18,'kalewadi');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(2,'komal',20,'pimpri');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(3,'sumedh',22,'udgir');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> describe student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| rollno  | int         | YES  |     | NULL    |       |
+| name    | varchar(10) | YES  |     | NULL    |       |
+| age     | int         | YES  |     | NULL    |       |
+| adderes | varchar(30) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+*************************************************SELECT COMMAND******************************************************
+
+mysql> select * from student;
++--------+---------+------+----------+
+| rollno | name    | age  | adderes  |
++--------+---------+------+----------+
+|      1 | mrunmai |   18 | kalewadi |
+|      2 | komal   |   20 | pimpri   |
+|      3 | sumedh  |   22 | udgir    |
++--------+---------+------+----------+
+3 rows in set (0.00 sec)
+
+*************************************************TRUNCATE COMMAND******************************************************
+
+mysql> truncate table student;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> select * from student;
+Empty set (0.00 sec)
+
+mysql> describe student;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| rollno  | int         | YES  |     | NULL    |       |
+| name    | varchar(10) | YES  |     | NULL    |       |
+| age     | int         | YES  |     | NULL    |       |
+| adderes | varchar(30) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into student values(1,'mrunmai',18,'kalewadi');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into student values(2,'komal',20,'pimpri');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(3,'sumedh',22,'udgir');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from student;
++--------+---------+------+----------+
+| rollno | name    | age  | adderes  |
++--------+---------+------+----------+
+|      1 | mrunmai |   18 | kalewadi |
+|      2 | komal   |   20 | pimpri   |
+|      3 | sumedh  |   22 | udgir    |
++--------+---------+------+----------+
+3 rows in set (0.00 sec)
+
+*************************************************UPDATE COMMAND******************************************************
+
+mysql> update student set adderes='pimple gurav' where rollno=2;
+
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from student;
++--------+---------+------+--------------+
+| rollno | name    | age  | adderes      |
++--------+---------+------+--------------+
+|      1 | mrunmai |   18 | kalewadi     |
+|      2 | komal   |   20 | pimple gurav |
+|      3 | sumedh  |   22 | udgir        |
++--------+---------+------+--------------+
+3 rows in set (0.00 sec)
+
+*************************************************DELETE COMMAND******************************************************
+
+mysql> delete from student where rollno=3;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++--------+---------+------+--------------+
+| rollno | name    | age  | adderes      |
++--------+---------+------+--------------+
+|      1 | mrunmai |   18 | kalewadi     |
+|      2 | komal   |   20 | pimple gurav |
++--------+---------+------+--------------+
+2 rows in set (0.00 sec)
+
+*************************************************NEW USER******************************************************
+
+mysql> create USER 'mrunmai' IDENTIFIED BY 'Mrunmai@123'
+    -> ;
+Query OK, 0 rows affected (0.05 sec)
+*************************************************GRANT COMMAND******************************************************
+mysql> grant select on student to mrunmai;
+Query OK, 0 rows affected (0.01 sec)
+
+
+C:\Users\GAJANAN>mysql -u mrunmai -p
+Enter password: ***********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| gajanan            |
+| information_schema |
+| performance_schema |
++--------------------+
+3 rows in set (0.01 sec)
+
+mysql> use gajanan;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_gajanan |
++-------------------+
+| student           |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from student;
++--------+---------+------+--------------+
+| rollno | name    | age  | adderes      |
++--------+---------+------+--------------+
+|      1 | mrunmai |   18 | kalewadi     |
+|      2 | komal   |   20 | pimple gurav |
++--------+---------+------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into student values(3,'gajanan',29,'pimple gurav');
+ERROR 1142 (42000): INSERT command denied to user 'mrunmai'@'localhost' for table 'student'
+
+mysql> update student set age=18 where rollno=2;
+ERROR 1142 (42000): UPDATE command denied to user 'mrunmai'@'localhost' for table 'student'
+
+*************************************************REVOKE COMMAND******************************************************
+mysql> revoke select on student from mrunmai;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from student;
+ERROR 1142 (42000): SELECT command denied to user 'mrunmai'@'localhost' for table 'student'
+mysql>
+
+*************************************************SET PRIMARY KEY******************************************************
+mysql> alter table teacher add primary key(id);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe teacher;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | NO   | PRI | NULL    |       |
++-------+------+------+-----+---------+-------+
+1 row in set (0.00 sec)
+
